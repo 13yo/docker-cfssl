@@ -1,18 +1,18 @@
-FROM ubuntu:xenial
+FROM golang:1.7-alpine
 
 MAINTAINER 13yo
-ENV PATH /go/bin:/usr/local/go/bin:$PATH
-ENV GOPATH /go
+# ENV PATH /go/bin:/usr/local/go/bin:$PATH
+# ENV GOPATH /go
 
 VOLUME /cfssl
 
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y \
-    golang \
-    gcc \
-    git &&\
-    echo "Prerequesites installed"
+#RUN apt-get update && \
+#    apt-get upgrade -y && \
+#    apt-get install -y \
+#    golang \
+#    gcc \
+#    git &&\
+#    echo "Prerequesites installed"
 
 RUN echo "Building cfssl" && \
     go get -u github.com/cloudflare/cfssl/cmd/cfssl && \
