@@ -14,7 +14,11 @@ VOLUME /cfssl
 #    git &&\
 #    echo "Prerequesites installed"
 
-RUN apk add --no-cache --virtual .build-deps git g++ gcc libc6-dev && \
+RUN apk add --no-cache --virtual .build-deps \ 
+        git \
+        gcc \
+		musl-dev \
+		openssl && \
     echo "Building cfssl" && \
     go get -u github.com/cloudflare/cfssl/cmd/cfssl && \
     echo "Building cfssl toolset" && \
