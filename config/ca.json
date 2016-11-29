@@ -1,6 +1,6 @@
 {
     "hosts": [
-        "ca.recommind.com"
+        "ca.acme.com"
     ],
     "key": {
         "algo": "rsa",
@@ -10,8 +10,8 @@
         {
             "C": "DE",
             "L": "Rheinbach",
-            "O": "Recommind",
-            "OU": "TS",
+            "O": "ACME",
+            "OU": "TKZ",
             "ST": "NRW"
         }
     ]
