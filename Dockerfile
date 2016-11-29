@@ -4,6 +4,7 @@ MAINTAINER 13yo
 # ENV PATH /go/bin:/usr/local/go/bin:$PATH
 # ENV GOPATH /go
 
+RUN mkdir /cfssl
 VOLUME /cfssl
 
 #RUN apt-get update && \
