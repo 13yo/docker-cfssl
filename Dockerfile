@@ -20,8 +20,8 @@ RUN apk add --no-cache bash
 RUN apk add --no-cache --virtual .build-deps \ 
         git \
         gcc \
-		musl-dev \
-		openssl && \
+	musl-dev \
+	openssl && \
     echo "Building cfssl" && \
     go get -u github.com/cloudflare/cfssl/cmd/cfssl && \
     echo "Building cfssl toolset" && \
