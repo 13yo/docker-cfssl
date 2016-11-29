@@ -1,9 +1,24 @@
-FROM cfssl:cfssl
+FROM ubuntu:xenial
+
 MAINTAINER 13yo
 ENV PATH /go/bin:/usr/local/go/bin:$PATH
 ENV GOPATH /go
 
 VOLUME /cfssl
+
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y \
+    golang \
+    gcc \
+    git &&\
+    echo "Prerequesites installed"
+
+RUN echo "Building cfssl" && \
+    go get -u github.com/cloudflare/cfssl/cmd/cfssl && \
+    echo "Building cfssl toolset" && \
+    go get -u github.com/cloudflare/cfssl/cmd/... && \
+    echo "Build complete"
 
 RUN groupadd -r cfssl -g 433 && \
     useradd -u 431 -r -g cfssl -d /opt/cfssl -s /sbin/nologin -c "CFSSL daemon account" cfssl && \
