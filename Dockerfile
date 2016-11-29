@@ -6,8 +6,8 @@ MAINTAINER 13yo
 # ENV USER root
 # USER root
 
-# RUN mkdir -p /cfssl
-VOLUME /cfssl
+RUN mkdir -p /cfssl
+# VOLUME /cfssl
 
 #RUN apt-get update && \
 #    apt-get upgrade -y && \
