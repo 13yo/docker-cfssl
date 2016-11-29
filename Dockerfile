@@ -31,9 +31,9 @@ COPY entrypoint.sh /opt/cfssl/entrypoint.sh
 RUN chmod a+x /opt/cfssl/entrypoint.sh
 
 USER cfssl    
-WORKDIR /cfssl
+WORKDIR /opt/cfssl
 
-COPY config/ca.json /cfssl/ca.json
-COPY config/config.json /cfssl/config.json
+COPY config/ca.json /opt/cfssl/certs/ca.json
+COPY config/config.json /opt/cfssl/certs/config.json
 
 CMD ["/opt/cfssl/entrypoint.sh"]
