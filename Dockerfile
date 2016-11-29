@@ -13,7 +13,7 @@ VOLUME /cfssl
 #    gcc \
 #    git &&\
 #    echo "Prerequesites installed"
-
+RUN apk add --no-cache bash
 RUN apk add --no-cache --virtual .build-deps \ 
         git \
         gcc \
@@ -26,11 +26,7 @@ RUN apk add --no-cache --virtual .build-deps \
     echo "Build complete" && \
     apk del .build-deps
 
-RUN groupadd -r cfssl -g 433 && \
-    useradd -u 431 -r -g cfssl -d /opt/cfssl -s /sbin/nologin -c "CFSSL daemon account" cfssl && \
-    mkdir -p /opt/cfssl && \
-    chown -R cfssl:cfssl /opt/cfssl && \
-    chown -R cfssl:cfssl /cfssl
+RUN mkdir -p /opt/cfssl
 
 COPY entrypoint.sh /opt/cfssl/entrypoint.sh
 RUN chmod a+x /opt/cfssl/entrypoint.sh
