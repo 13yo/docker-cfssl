@@ -1,0 +1,18 @@
+{
+    "hosts": [
+        "ca.recommind.com"
+    ],
+    "key": {
+        "algo": "rsa",
+        "size": 4096
+    },
+    "names": [
+        {
+            "C": "DE",
+            "L": "Rheinbach",
+            "O": "Recommind",
+            "OU": "TS",
+            "ST": "NRW"
+        }
+    ]
+}
