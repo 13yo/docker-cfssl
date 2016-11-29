@@ -29,8 +29,7 @@ RUN apk add --no-cache --virtual .build-deps \
 
 COPY entrypoint.sh /opt/cfssl/entrypoint.sh
 RUN chmod a+x /opt/cfssl/entrypoint.sh
-
-USER cfssl    
+   
 WORKDIR /opt/cfssl
 
 COPY config/ca.json /opt/cfssl/certs/ca.json
