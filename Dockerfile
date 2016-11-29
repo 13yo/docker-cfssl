@@ -14,13 +14,13 @@ VOLUME /cfssl
 #    git &&\
 #    echo "Prerequesites installed"
 
-RUN apk add --no-cache git gcc
-
-RUN echo "Building cfssl" && \
+RUN apk add --no-cache --virtual .build-deps git g++ gcc libc6-dev && \
+    echo "Building cfssl" && \
     go get -u github.com/cloudflare/cfssl/cmd/cfssl && \
     echo "Building cfssl toolset" && \
     go get -u github.com/cloudflare/cfssl/cmd/... && \
-    echo "Build complete"
+    echo "Build complete" && \
+    apk del .build-deps
 
 RUN groupadd -r cfssl -g 433 && \
     useradd -u 431 -r -g cfssl -d /opt/cfssl -s /sbin/nologin -c "CFSSL daemon account" cfssl && \
