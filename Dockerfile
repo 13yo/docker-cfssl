@@ -3,10 +3,10 @@ FROM golang:1.7-alpine
 MAINTAINER 13yo
 # ENV PATH /go/bin:/usr/local/go/bin:$PATH
 # ENV GOPATH /go
-ENV USER root
-USER root
+# ENV USER root
+# USER root
 
-RUN mkdir -p /cfssl
+# RUN mkdir -p /cfssl
 VOLUME /cfssl
 
 #RUN apt-get update && \
