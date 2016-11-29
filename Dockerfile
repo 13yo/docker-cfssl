@@ -4,8 +4,8 @@ MAINTAINER 13yo
 # ENV PATH /go/bin:/usr/local/go/bin:$PATH
 # ENV GOPATH /go
 
-RUN mkdir /cfssl
-VOLUME /cfssl
+RUN mkdir -p /opt/cfssl/certs
+VOLUME /opt/cfssl/certs
 
 #RUN apt-get update && \
 #    apt-get upgrade -y && \
@@ -26,8 +26,6 @@ RUN apk add --no-cache --virtual .build-deps \
     go get -u github.com/cloudflare/cfssl/cmd/... && \
     echo "Build complete" && \
     apk del .build-deps
-
-RUN mkdir -p /opt/cfssl
 
 COPY entrypoint.sh /opt/cfssl/entrypoint.sh
 RUN chmod a+x /opt/cfssl/entrypoint.sh
