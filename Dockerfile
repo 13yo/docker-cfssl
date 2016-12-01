@@ -7,7 +7,7 @@ MAINTAINER 13yo
 # USER root
 
 RUN mkdir -p /cfssl
-VOLUME ["/cfssl²]
+VOLUME ["/cfssl"]
 
 #RUN apt-get update && \
 #    apt-get upgrade -y && \
@@ -16,6 +16,7 @@ VOLUME ["/cfssl²]
 #    gcc \
 #    git &&\
 #    echo "Prerequesites installed"
+
 RUN apk add --no-cache bash
 RUN apk add --no-cache --virtual .build-deps \ 
         git \
@@ -33,9 +34,9 @@ RUN apk add --no-cache --virtual .build-deps \
 COPY entrypoint.sh /opt/cfssl/entrypoint.sh
 RUN chmod a+x /opt/cfssl/entrypoint.sh
    
-WORKDIR /opt/cfssl
+WORKDIR /cfssl
 
-COPY config/ca.json /cfssl/ca.json
-COPY config/config.json /cfssl/config.json
+COPY ./config/ca.json /cfssl/ca.json
+COPY ./config/config.json /cfssl/config.json
 
 CMD ["/opt/cfssl/entrypoint.sh"]
