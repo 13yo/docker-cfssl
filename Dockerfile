@@ -7,7 +7,7 @@ MAINTAINER 13yo
 # USER root
 
 RUN mkdir -p /cfssl
-# VOLUME /cfssl
+VOLUME ["/cfssl²]
 
 #RUN apt-get update && \
 #    apt-get upgrade -y && \
