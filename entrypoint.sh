@@ -7,4 +7,4 @@ if [ ! -f /cfssl/ca.pem ]
 fi
 
 echo "Starting cfssl server"
-exec cfssl serve -address 0.0.0.0 -config /opt/cfssl/config.json -ca /cfssl/ca.pem -ca-key /cfssl/ca-key.pem $@
+exec cfssl serve -loglevel=0 -address 0.0.0.0 -config /opt/cfssl/config.json -ca /cfssl/ca.pem -ca-key /cfssl/ca-key.pem > /var/log/cfssl.log
