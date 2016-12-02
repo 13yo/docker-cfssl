@@ -6,7 +6,7 @@ MAINTAINER 13yo
 # ENV USER root
 # USER root
 
-RUN mkdir -p /cfssl
+# RUN mkdir -p /cfssl
 VOLUME ["/cfssl"]
 
 #RUN apt-get update && \
@@ -34,9 +34,7 @@ RUN apk add --no-cache --virtual .build-deps \
 COPY entrypoint.sh /opt/cfssl/entrypoint.sh
 RUN chmod a+x /opt/cfssl/entrypoint.sh
    
-WORKDIR /cfssl
-
-COPY ./config/ca.json /cfssl/ca.json
-COPY ./config/config.json /cfssl/config.json
+COPY config/ca.json /opt/cfssl/ca.json
+COPY config/config.json /opt/cfssl/config.json
 
 CMD ["/opt/cfssl/entrypoint.sh"]
